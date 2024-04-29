@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Document</title>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: linear-gradient(to top left,green 10%,white 20%,orange 30%,green 40%,white 50%,orange 60%,green 70%,white 80%,orange 90%);
+        background-repeat: no-repeat;
+        background-size: 100% 1000px;
+    }
+h1{
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-style: oblique;
+    color: blue;
+    text-shadow: 2px 2px 4px red;
+}
+.day{
+    width:400px;
+    height:100px;
+    border:2px solid ;
+    padding:20px;
+}
+#d{
+    margin-left: 100px;
+    font-size: 50px;
+    color:black;
+}
+.date{
+    width:400px;
+    height: 100px;
+    border: 2px solid;
+    padding:20px;
+    margin: 5px;
+}
+.span{
+    font-size: 30px;
+    margin: 30px;
+}
+#slash{
+    font-size: 30px;
+}
+.time{
+    width:500px;
+    height:100px;
+    border:2px solid;
+    padding: 20px;
+    font-size: 20px;
+    padding: 50px;
+}
+.box{
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    padding:25px; 
+    margin: 20px; 
+}
+#ampm{
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    padding: 20px;
+}
+lable{
+    margin:28px;
+    margin-top: 150px;
+}
+</style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div class="day">
+        <span id="d"></span>
+    </div>
+    <script>
+        var day1= document.getElementById("d")
+        var date=new Date();
+        var day2=date.getDay();
+        day1.innerHTML=day2
+        switch(day2)
+        {
+            case 0: day1.innerHTML="Sunday"
+            break;
+            case 1: day1.innerHTML="Monday"
+            break;
+            case 2: day1.innerHTML="Tuesday"
+            break;
+            case 3: day1.innerHTML="Wednesday"
+            break;
+            case 4: day1.innerHTML="Thusday"
+            break;
+            case 5: day1.innerHTML="Friday"
+            break;
+            case 6: day1.innerHTML="Saturday"
+            break;
+        }
+    </script>
+    <div class="date">
+        <span class="span" id="date"></span>
+        <span id="slash">/</span>
+        <span class="span" id="month"></span>
+        <span id="slash">/</span>
+        <span class="span" id="year"></span>
+    </div>
+    <script>
+        var date1= document.getElementById("date")
+        var month1=document.getElementById("month")
+        var year1=document.getElementById("year")
+        var date2=  date.getDate()
+        var month2=date.getMonth()
+        var year2=date.getFullYear()
+        date1.innerHTML=date2
+        month1.innerHTML=month2
+        switch(month2)
+        {
+            case 0:month1.innerHTML="JAN"
+            break;
+            case 1:month1.innerHTML="FEB"
+            break;
+            case 2:month1.innerHTML="MAR"
+            break;
+            case 3:month1.innerHTML="APR"
+            break;
+            case 4:month1.innerHTML="MAY"
+            break;
+            case 5:month1.innerHTML="JUNE"
+            break;
+            case 6:month1.innerHTML="JULY"
+            break;
+            case 7:month1.innerHTML="AUGUST"
+            break;
+            case 8:month1.innerHTML="SEPTEMBER"
+            break;
+            case 9:month1.innerHTML="OCTOBER"
+            break;
+            case 10:month1.innerHTML="NOVEMBER"
+            break;
+            case 11:month1.innerHTML="DECEMBER"
+            break;
+        }
+         year1.innerHTML=year2
+    </script>
+    <div class="time">
+        <span id="h" class="box"></span>
+        <span id="m" class="box"></span>
+        <span id="s" class="box"></span>
+        <span id="ampm"></span>
+        <br>
+        <br>
+        <lable>Hours</lable>
+        <lable>Minutes</lable>
+        <lable>seconds</lable>
+    </div>
+    <script>
+        function clock()
+        {
+            var date=new Date()
+            var hour1= document.getElementById("h")
+            var hour2=date.getHours()
+            var a=document.getElementById("ampm")
+            a.innerHTML="PM"
+            if(hour2>12)
+            {
+                hour2=hour2-12;
+                a.innerHTML="AM"
+            }
+            if(hour2<10)
+            {
+                hour2="0" +hour2
+            }
+            hour1.innerHTML=hour2
+             var min1=document.getElementById("m")
+             var min2=date.getMinutes()
+             if(min2<10)
+             {
+                 min2="0"+min2;
+            }
+             min1.innerHTML=min2
+             var sec1=document.getElementById("s")
+             var sec2=date.getSeconds()
+             if(sec2<10)
+             {
+                 sec2="0"+sec2
+             }
+            sec1.innerHTML=sec2
+            setTimeout(() => {
+            clock() 
+        }, 1000);
+    }
+        clock()
+    </script>
+</body>
+</html>
